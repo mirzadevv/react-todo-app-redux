@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../store";
+import { completedChange, deleteTodo } from "../store/todos/todosActions";
 const TodosList = () => {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
@@ -18,12 +18,7 @@ const TodosList = () => {
                     <input
                       className="checkbox"
                       type="checkbox"
-                      onClick={() =>
-                        dispatch({
-                          type: "completedChange",
-                          payload: todo,
-                        })
-                      }
+                      onClick={() => dispatch(completedChange(todo))}
                     />
                     {todo.title}
                     <i className="input-helper"> </i>
@@ -31,7 +26,7 @@ const TodosList = () => {
                 </div>
                 <i
                   className="remove mdi mdi-close-circle-outline"
-                  onClick={() => dispatch({ type: "delete", payload: todo })}
+                  onClick={() => dispatch(deleteTodo(todo))}
                 ></i>
               </li>
             ))}
