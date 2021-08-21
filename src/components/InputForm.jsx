@@ -1,17 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { v4 as uuid } from "uuid";
+import { add } from "../store/todos/todosActions";
 
 const InputForm = () => {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
 
   const handleAddTodo = () => {
-    dispatch({
-      type: "add",
-      payload: { id: uuid(), title: inputValue, isCompleted: false },
-    });
+    dispatch(add(inputValue));
     setInputValue("");
   };
 
