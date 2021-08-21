@@ -28,7 +28,12 @@ const TodosList = () => {
                     <i className="input-helper"> </i>
                   </label>
                 </div>
-                <i className="remove mdi mdi-close-circle-outline"></i>
+                <i
+                  className="remove mdi mdi-close-circle-outline"
+                  onClick={() =>
+                    store.dispatch({ type: "delete", payload: todo })
+                  }
+                ></i>
               </li>
             ))}
           </>

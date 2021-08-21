@@ -20,6 +20,11 @@ export default function todosReducer(todos = [], action) {
       return newTodos;
     }
 
+    case "delete": {
+      const newTodos = todos.filter((todoItem) => todoItem.id !== todo.id);
+      return newTodos;
+    }
+
     default:
       return todos;
   }
