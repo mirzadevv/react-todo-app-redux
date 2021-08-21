@@ -1,8 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import store from "../store";
 const TodosList = () => {
   const todos = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
   return (
     <div className="list-wrapper">
       <ul className="d-flex flex-column todo-list">
@@ -18,7 +19,7 @@ const TodosList = () => {
                       className="checkbox"
                       type="checkbox"
                       onClick={() =>
-                        store.dispatch({
+                        dispatch({
                           type: "completedChange",
                           payload: todo,
                         })
@@ -30,9 +31,7 @@ const TodosList = () => {
                 </div>
                 <i
                   className="remove mdi mdi-close-circle-outline"
-                  onClick={() =>
-                    store.dispatch({ type: "delete", payload: todo })
-                  }
+                  onClick={() => dispatch({ type: "delete", payload: todo })}
                 ></i>
               </li>
             ))}
